@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import db.DB;
 import db.DbIntegrityException;
@@ -16,6 +17,8 @@ import model.entities.Seller;
 public class Program {
 
 	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
 
 		SellerDao sellerDao = Daofactory.creatSellerDao();
 		System.out.println("Test 1 ");
@@ -42,5 +45,14 @@ public class Program {
 		seller.setName("Marta");
 		sellerDao.update(seller);
 		System.out.println("Update completed");
+
+		System.out.println("Test 6 ");
+		System.out.print("Enter id for delete test: ");
+		int id = sc.nextInt();
+		sellerDao.deleteById(id);
+		System.out.println("Delete completed");
+
+		sc.close();
+
 	}
 }
